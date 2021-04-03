@@ -229,14 +229,12 @@ body.mouse .menu-list > li:hover .menu-list__arrow-pinter {
   top: 40px;
   left: 0;
   width: 100vw;
-  opacity: 0;
   transition: all 0.8s;
 }
 
 body.mouse .menu-list > li:hover .sub-menu {
   display: block;
   top: 40px;
-  opacity: 1;
   transition: all 0.4s;
 }
 
