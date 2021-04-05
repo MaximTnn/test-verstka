@@ -316,6 +316,15 @@ body.mouse .menu-list > li:hover .sub-menu {
   justify-content: space-between;
 }
 
+.user-menu__icon {
+  transition: all 0.2s;
+}
+
+.user-menu__icon:hover {
+  transform: scale(1.2);
+  transition: all 0.2s;
+}
+
 .main {
   height: 100vh;
 }
@@ -601,6 +610,7 @@ textarea {
 }
 
 .form__close {
+  cursor: pointer;
   margin-left: auto;
   margin-top: -30px;
   display: block;
