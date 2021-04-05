@@ -13,7 +13,6 @@ modalWindow.addEventListener('click',modalWindowOpen())
 function modalWindowOpen(a) {
     const modalWindow = document.querySelector('.modal-window')
     modalWindow.classList.toggle('active')
-    console.log(modalWindow.classList.contains('active'))
     if (!modalWindow.classList.contains('active')) {
         header.classList.add('active')
         header.style.boxShadow = "0 5px 5px #00000021"
@@ -52,7 +51,6 @@ if(isMobile.any()){
 			let thisLink=arrow[i].previousElementSibling;
 			let subMenu=arrow[i].nextElementSibling;
             let thisArrow=arrow[i].childNodes[1]
-            console.log(thisArrow)
 
 		thisLink.addEventListener('click', function(){
 			subMenu.classList.toggle('active');
@@ -72,7 +70,6 @@ window.addEventListener('scroll', function(){
     const videoBg = document.querySelector('.video')
     let scroll = window.scrollY
     let opacity
-    console.log(scroll, opacity)
    
     if (scroll <= maxScroll) {
         opacity = 1 - (scroll / maxScroll)
@@ -95,7 +92,6 @@ checkAgreement.addEventListener('click', checkSubmit())
 inputs.forEach(el => el.addEventListener("keyup", event => validation(event)))
 
 function validation(event) {
-    console.log("hi")
     if (!event.target.validity.valid) {
         event.target.parentElement.querySelector('.form__invalid').classList.add('active')
         event.target.parentElement.querySelector('.form__valid').classList.remove('active')
@@ -107,7 +103,6 @@ function validation(event) {
 }
 
 function checkSubmit() {
-    console.log('hi 2')
     const name = document.querySelector('.form__input-name')
     const phone = document.querySelector('.form__input-phone')
     const email = document.querySelector('.form__input-email')
