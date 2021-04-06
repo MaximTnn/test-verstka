@@ -66,6 +66,17 @@ input::-ms-clear {
   display: none;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
 button {
   cursor: pointer;
 }
@@ -557,7 +568,7 @@ body.mouse .menu-list > li:hover .sub-menu {
   position: relative;
 }
 
-.form__input .phone {
+.form__input.phone {
   width: 195px;
 }
 
