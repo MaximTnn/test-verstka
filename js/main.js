@@ -31,6 +31,9 @@ menuBtn.addEventListener('click', function() {
     menu.classList.toggle('active')
     header.classList.toggle('active')
     menuBtn.classList.toggle('active')
+    if (menuBtn.classList.contains('active') || !modalWindow.classList.contains('active')) {
+        header.classList.add('active')
+    }
 })
 
 let isMobile = {
@@ -66,13 +69,17 @@ if(isMobile.any()){
 }
 
 window.addEventListener('scroll', function(){
-    let maxScroll = 500
+    let maxScroll = document.documentElement.clientHeight * 0.4
+    console.log(maxScroll , window.scrollY)
     const videoBg = document.querySelector('.video')
     let scroll = window.scrollY
     let opacity
    
     if (scroll <= maxScroll) {
         opacity = 1 - (scroll / maxScroll)
+    }
+    if (scroll >= maxScroll) {
+        opacity = 0
     }
     if (scroll > 200) {
         header.classList.add('active')
@@ -89,15 +96,27 @@ window.addEventListener('scroll', function(){
 
 
 checkAgreement.addEventListener('click', checkSubmit())
-inputs.forEach(el => el.addEventListener("keyup", event => validation(event)))
+inputs.forEach(el => el.addEventListener("blur", event => validation(event)))
 
 function validation(event) {
+    const phonePatterns = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/
+    const inputPhone = document.querySelector('#input-phone')
     if (!event.target.validity.valid) {
         event.target.parentElement.querySelector('.form__invalid').classList.add('active')
         event.target.parentElement.querySelector('.form__valid').classList.remove('active')
     } else {
         event.target.parentElement.querySelector('.form__invalid').classList.remove('active')
         event.target.parentElement.querySelector('.form__valid').classList.add('active')
+    }
+    if (event.target == inputPhone) {
+        if (event.target.value.toString().match(phonePatterns)) {
+            console.log("yes")
+            event.target.parentElement.querySelector('.form__invalid').classList.remove('active')
+            event.target.parentElement.querySelector('.form__valid').classList.add('active')
+        } else {
+            event.target.parentElement.querySelector('.form__invalid').classList.add('active')
+            event.target.parentElement.querySelector('.form__valid').classList.remove('active')
+        }
     }
     checkSubmit()
 }
